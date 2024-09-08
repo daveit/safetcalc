@@ -152,25 +152,6 @@
 		}
 	};
 
-	// Explicit function declaration for removing a submission
-	/*	function removeSubmission(index) {
-			const submission = submissions[index];
-			// Subtract the submission's values from accumulated totals
-			stp_value_at -= submission.stp_value;
-			stp_lh_rh_value_at -= stp_lh_rh_value;
-			stp_e20_ss_value_at -= stp_e20_ss_value;
-			stp_e40_ss_value_at -= stp_e40_ss_value;
-			stp_e50_ss_value_at -= stp_e50_ss_value;
-			stp_e60_ss_value_at -= stp_e60_ss_value;
-			stp_e75_ss_value_at -= stp_e75_ss_value;
-			stp_e90_ss_value_at -= stp_e90_ss_value;
-			stl_10_ss_value_at -= stl_10_value;
-			stg_200_ss_value_at -= stg_200_ss_value;
-			// Remove the submission from the list
-			submissions.splice(index, 1);
-			submissions = [...submissions]; // Trigger reactivity
-		}*/
-
 	function removeSubmission(index) {
 		const submission = submissions[index];
 
@@ -200,7 +181,50 @@
 		<div class="md:w-1/2 mb-4 md:mb-0">
 
 			<h2 class="pb-3 font-semibold text-2xl text-center">Conveyer Calculator</h2>
-			<form class="form-width mx-auto border-2 border-gray-400 p-2 pb-0 m-5">
+
+			<div class="w-full flex justify-center px-2 sm:px-0">
+				<form class="w-full max-w-md mx-auto border-2 border-gray-400 p-4 m-2 sm:m-5 rounded-lg">
+					<div class="space-y-4">
+						<div>
+							<label for="length" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
+								Enter Length
+							</label>
+							<input
+								bind:value={formData.length}
+								type="number"
+								id="length"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							/>
+						</div>
+
+						<div>
+							<label for="separation" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
+								Enter Separation
+							</label>
+							<input
+								bind:value={formData.separation}
+								type="number"
+								id="separation"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							/>
+						</div>
+
+						<div class="flex items-center">
+							<input
+								id="purple-checkbox"
+								type="checkbox"
+								on:click={handleClick}
+								bind:checked={bothChecked}
+								class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+							/>
+							<label for="purple-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+								Both Sides of Belt
+							</label>
+						</div>
+					</div>
+				</form>
+			</div>
+<!--			<form class="form-width mx-auto border-2 border-gray-400 p-2 pb-0 m-5">
 				<div class="mb-1 mx-auto pb-2">
 					<label for="length" class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
 					>Enter Length</label
@@ -228,18 +252,9 @@
 						<label for="purple-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Both Sides of
 							Belt</label>
 					</div>
-					<!--<div class="align-checkbox pt-5">
-						<label for="bscb">Both Sides of Belt:</label>
-						<input
-							type="checkbox"
-							on:click={handleClick}
-							bind:checked={bothChecked}
-							name="bscb"
-							class="checked:bg-blue-500 pt-5 cb-padding"
-						/>
-					</div>-->
+
 				</div>
-			</form>
+			</form>-->
 			<!-- Warning Message -->
 			{#if warningMessage}
 				<h2 class="warning-message">{warningMessage}</h2>
@@ -279,47 +294,6 @@
 					<span>Export</span>
 				</button>
 			</div>
-
-<!--			<div class="pb-5 flex justify-center items-center space-x-2">
-				<button
-					on:click={setdefault}
-					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-				>Default
-				</button
-				>
-				<button
-					on:click={setblank}
-					class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-				>Clear Current
-				</button
-				>
-				<button
-					on:click={resetAll}
-					class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded"
-				>Reset ALL
-				</button
-				>
-				<button
-					on:click={addToTotal}
-					class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-				>Add to Total
-				</button
-				>
-				<button
-					class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-					<svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						<path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-					</svg>
-					<span>Export</span>
-				</button>
-				&lt;!&ndash;
-				<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-				>Export Report</button
-				>
-				<button class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 mx-2 rounded"
-							>Create PDF</button
-						>&ndash;&gt;
-			</div>-->
 
 			<div class="container-results mx-auto">
 				<h1 class="pb-3 font-semibold text-2xl border-gray-400 border-bottom">Results</h1>
@@ -413,6 +387,7 @@
 						</div>
 					</div>
 
+				<div class="container-results mx-auto mt-2 mb-16">
 					<h2 class="pb-3 font-semibold text-2xl text-left">Accumulated Entries</h2>
 
 					<ul>
@@ -433,6 +408,7 @@
 							<span>❌</span>
 						</div>
 					{/each}-->
+				</div>
 				</div>
 
 		</div>
