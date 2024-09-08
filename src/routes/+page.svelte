@@ -183,46 +183,48 @@
 			<h2 class="pb-3 font-semibold text-2xl text-center">Conveyer Calculator</h2>
 
 			<div class="w-full flex justify-center px-2 sm:px-0">
-				<form class="w-full max-w-md mx-auto border-2 border-gray-400 p-4 m-2 sm:m-5 rounded-lg">
-					<div class="space-y-4">
-						<div>
-							<label for="length" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
-								Enter Length
-							</label>
-							<input
-								bind:value={formData.length}
-								type="number"
-								id="length"
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							/>
-						</div>
+				<div class="w-full flex justify-center px-2 sm:px-0">
+					<form class="w-full max-w-md mx-auto border-2 border-gray-400 p-4 m-2 sm:m-5 rounded-lg">
+						<div class="space-y-4">
+							<div class="flex flex-col items-center">
+								<label for="length" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
+									Enter Length
+								</label>
+								<input
+									bind:value={formData.length}
+									type="number"
+									id="length"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 sm:w-48 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								/>
+							</div>
 
-						<div>
-							<label for="separation" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
-								Enter Separation
-							</label>
-							<input
-								bind:value={formData.separation}
-								type="number"
-								id="separation"
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							/>
-						</div>
+							<div class="flex flex-col items-center">
+								<label for="separation" class="block text-sm font-medium text-gray-900 mb-2 dark:text-gray-300">
+									Enter Separation
+								</label>
+								<input
+									bind:value={formData.separation}
+									type="number"
+									id="separation"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 sm:w-48 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								/>
+							</div>
 
-						<div class="flex items-center">
-							<input
-								id="purple-checkbox"
-								type="checkbox"
-								on:click={handleClick}
-								bind:checked={bothChecked}
-								class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-							/>
-							<label for="purple-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-								Both Sides of Belt
-							</label>
+							<div class="flex justify-center items-center">
+								<input
+									id="purple-checkbox"
+									type="checkbox"
+									on:click={handleClick}
+									bind:checked={bothChecked}
+									class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+								/>
+								<label for="purple-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+									Both Sides of Belt
+								</label>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 <!--			<form class="form-width mx-auto border-2 border-gray-400 p-2 pb-0 m-5">
 				<div class="mb-1 mx-auto pb-2">
@@ -415,19 +417,20 @@
 	</div>
 
 	<style>
-      .form-width {
-          width: 25%;
-          align-content: center;
-      }
+      /*
+			.form-width {
+					width: 25%;
+					align-content: center;
+			}
 
-      /*    .cb-padding {
+					.cb-padding {
 							margin-left: 20px;
 					}
-      .content {
-          width: 75%;
-          max-width: var(--column-width);
-          margin: var(--column-margin-top) auto 0 auto;
-      }
+			.content {
+					width: 75%;
+					max-width: var(--column-width);
+					margin: var(--column-margin-top) auto 0 auto;
+			}
 */
 
       .container-results {
